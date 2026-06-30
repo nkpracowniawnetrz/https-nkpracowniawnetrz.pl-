@@ -302,20 +302,4 @@ export const projects: Project[] = [
       "/images/portfolio/lazienka-ciepla/widok_06.png",
     ],
   },
-  {
-    id: "lazienka-minimalistyczna",
-    title: "Minimalistyczna łazienka",
-    category: "Łazienka",
-    description:
-      "Nowoczesna łazienka zaprojektowana w stonowanej palecie beżów i ciepłych odcieni drewna. Minimalistyczne formy, czarne akcenty oraz podświetlane lustro nadają wnętrzu elegancki i uporządkowany charakter. Układ pomieszczenia został przemyślany tak, aby połączyć komfort codziennego użytkowania z maksymalnym wykorzystaniem dostępnej przestrzeni, uwzględniając również praktyczną strefę pralni.",
-    thumbnail:
-      "/images/portfolio/lazienka-minimalistyczna/widok_01-thumb.webp",
-    images: [
-      "/images/portfolio/lazienka-minimalistyczna/widok_01.webp",
-      "/images/portfolio/lazienka-minimalistyczna/widok_02.webp",
-      "/images/portfolio/lazienka-minimalistyczna/widok_03.webp",
-      "/images/portfolio/lazienka-minimalistyczna/widok_05.webp",
-      "/images/portfolio/lazienka-minimalistyczna/widok_06.webp",
-    ],
-  },
 ];
