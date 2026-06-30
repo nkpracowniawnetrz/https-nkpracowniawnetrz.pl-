@@ -1,0 +1,24 @@
+---
+import ScrollReveal from "./ScrollReveal.astro";
+---
+
+<section class="relative py-32 overflow-hidden">
+  <div class="absolute inset-0 bg-cover bg-center bg-fixed" style="background-image: url('/images/stock/cta-bg.webp');"></div>
+  <div class="absolute inset-0 bg-black/75"></div>
+
+  <div class="relative z-10 max-w-3xl mx-auto px-6 text-center">
+    <ScrollReveal>
+      <p class="text-beige text-sm tracking-[0.3em] uppercase mb-6">Masz pomysł na wnętrze?</p>
+      <h2 class="text-3xl md:text-5xl font-extralight mb-6 leading-tight">
+        Zamień swoje marzenia<br />w rzeczywistość
+      </h2>
+      <p class="text-white/70 font-light mb-10 max-w-lg mx-auto">
+        Każdy projekt zaczyna się od rozmowy. Opowiedz mi o swoich oczekiwaniach,
+        a wspólnie stworzymy wnętrze idealne dla Ciebie.
+      </p>
+      <a href="/#kontakt" class="inline-block bg-beige text-black px-10 py-4 text-sm tracking-wider uppercase hover:bg-beige-light transition-all duration-300">
+        Umów bezpłatną konsultację
+      </a>
+    </ScrollReveal>
+  </div>
+</section>

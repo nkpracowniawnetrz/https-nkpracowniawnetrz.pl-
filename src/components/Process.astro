@@ -1,0 +1,36 @@
+---
+import ScrollReveal from "./ScrollReveal.astro";
+
+const steps = [
+  { number: "01", title: "Konsultacja i poznanie potrzeb", description: "Każdy projekt rozpoczynam od rozmowy, podczas której poznaję potrzeby, styl życia oraz oczekiwania klientów. Omawiamy funkcjonalność wnętrza, preferowaną estetykę, budżet i zakres współpracy. To etap, który pozwala stworzyć dobrze dopasowaną i świadomie zaprojektowaną przestrzeń." },
+  { number: "02", title: "Układ funkcjonalny", description: "Na podstawie zebranych informacji przygotowuję układ funkcjonalny wnętrza. To jeden z najważniejszych etapów projektu, ponieważ wpływa na komfort codziennego użytkowania przestrzeni. Skupiam się na ergonomii, odpowiednim rozmieszczeniu stref oraz praktycznych rozwiązaniach dopasowanych do indywidualnych potrzeb." },
+  { number: "03", title: "Koncepcja i wizualizacje", description: "Kolejnym etapem jest opracowanie spójnej koncepcji wnętrza obejmującej kolorystykę, materiały, oświetlenie oraz detale wykończeniowe. Przygotowuję realistyczne wizualizacje, które pozwalają lepiej wyobrazić sobie finalny efekt oraz świadomie podejmować decyzje projektowe." },
+  { number: "04", title: "Dokumentacja i realizacja", description: "Po zaakceptowaniu koncepcji przygotowuję dokumentację techniczną niezbędną do realizacji projektu. Obejmuje ona między innymi rysunki wykonawcze, układy instalacji oraz zestawienia materiałów i wyposażenia. Dzięki temu cały proces realizacji przebiega sprawniej i bardziej przejrzyście." },
+];
+---
+
+<section class="py-24 md:py-32 relative overflow-hidden">
+  <div class="absolute left-1/2 top-0 bottom-0 w-[1px] bg-white/5 hidden lg:block"></div>
+  <div class="max-w-7xl mx-auto px-6">
+    <ScrollReveal>
+      <div class="text-center mb-20">
+        <p class="text-beige text-sm tracking-[0.3em] uppercase mb-4">Proces</p>
+        <h2 class="text-3xl md:text-4xl font-light">Jak pracuję</h2>
+      </div>
+    </ScrollReveal>
+
+    <div class="grid md:grid-cols-2 gap-12 lg:gap-16">
+      {steps.map((step, index) => (
+        <ScrollReveal delay={index * 150}>
+          <div class="flex gap-6 group">
+            <span class="text-5xl font-extralight text-beige/20 group-hover:text-beige/40 transition-colors duration-500 shrink-0">{step.number}</span>
+            <div>
+              <h3 class="text-lg font-light mb-3 tracking-wide">{step.title}</h3>
+              <p class="text-white/60 text-sm leading-relaxed">{step.description}</p>
+            </div>
+          </div>
+        </ScrollReveal>
+      ))}
+    </div>
+  </div>
+</section>

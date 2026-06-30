@@ -1,0 +1,40 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navigation from "../../components/Navigation.astro";
+import Footer from "../../components/Footer.astro";
+import PortfolioFilter from "../../components/PortfolioFilter";
+import { projects, categories } from "../../data/projects";
+---
+
+<Layout title="Portfolio | Natalia Kołodziejska - Architekt Wnętrz" description="Portfolio projektów wnętrz — salony, kuchnie, łazienki, sypialnie i biura. Nowoczesne i funkcjonalne realizacje Natalii Kołodziejskiej.">
+  <Navigation />
+
+  <!-- Hero banner -->
+  <section class="relative h-[50vh] min-h-[350px] flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/stock/hero-bg.webp');"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/70 to-background"></div>
+    <div class="relative z-10 text-center px-6">
+      <p class="text-beige text-sm tracking-[0.4em] uppercase mb-4">Portfolio</p>
+      <h1 class="text-4xl md:text-6xl font-extralight tracking-tight">Moje realizacje</h1>
+      <div class="w-16 h-[1px] bg-beige/50 mx-auto mt-6"></div>
+    </div>
+  </section>
+
+  <main class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <PortfolioFilter client:load projects={projects} categories={categories} />
+    </div>
+  </main>
+
+  <!-- CTA -->
+  <section class="py-20 border-t border-white/5">
+    <div class="max-w-2xl mx-auto px-6 text-center">
+      <p class="text-white/60 font-light mb-6">Chcesz zobaczyć, jak mogę odmienić Twoje wnętrze?</p>
+      <a href="/#kontakt" class="inline-block bg-beige text-black px-10 py-4 text-sm tracking-wider uppercase hover:bg-beige-light transition-all duration-300">
+        Umów bezpłatną konsultację
+      </a>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

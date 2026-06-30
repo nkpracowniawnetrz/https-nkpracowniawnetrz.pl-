@@ -1,0 +1,176 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title = "Natalia Kołodziejska | Architekt Wnętrz - Tomaszów Mazowiecki",
+  description = "Profesjonalne projektowanie wnętrz — nowoczesne, eleganckie i funkcjonalne przestrzenie. Projekty mieszkań i domów jednorodzinnych. Tomaszów Mazowiecki i okolice.",
+  ogImage = "/og-image.jpg",
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="author" content="Natalia Kołodziejska" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+    <meta property="og:locale" content="pl_PL" />
+    <meta property="og:site_name" content="NK Pracownia Wnętrz" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
+
+    <!-- Fonts (self-hosted) -->
+    <style>
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 200 500;
+        font-display: swap;
+        src: url('/fonts/inter-latin-ext.woff2') format('woff2');
+        unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+      }
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 200 500;
+        font-display: swap;
+        src: url('/fonts/inter-latin.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+    </style>
+
+    <!-- Preload hero background for LCP -->
+    <link rel="preload" href="/images/stock/hero-bg.webp" as="image" />
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="https://api.web3forms.com" />
+
+    <title>{title}</title>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": "https://nkpracowniawnetrz.pl",
+      "name": "NK Pracownia Wnętrz Natalia Kołodziejska",
+      "description": "Profesjonalne projektowanie wnętrz — nowoczesne, eleganckie i funkcjonalne przestrzenie.",
+      "url": "https://nkpracowniawnetrz.pl",
+      "telephone": "+48725360335",
+      "email": "nkpracowniawnetrz@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ul. Krzyżowa 25/27/6",
+        "addressLocality": "Tomaszów Mazowiecki",
+        "postalCode": "97-200",
+        "addressCountry": "PL"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "51.5307",
+        "longitude": "20.0085"
+      },
+      "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": "51.5307",
+          "longitude": "20.0085"
+        },
+        "geoRadius": "50000"
+      },
+      "priceRange": "$$",
+      "image": "https://nkpracowniawnetrz.pl/og-image.jpg",
+      "sameAs": [
+        "https://www.facebook.com/profile.php?id=61588354151901",
+        "https://www.instagram.com/nk.pracowniawnetrz/"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Usługi projektowania wnętrz",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Projekt kompleksowy",
+              "description": "Kompleksowy projekt wnętrza obejmujący wszystkie etapy pracy"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Projekt funkcjonalny",
+              "description": "Ergonomiczny i praktyczny układ wnętrza"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Wizualizacje wnętrz",
+              "description": "Realistyczne wizualizacje 3D projektowanego wnętrza"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Wsparcie podczas realizacji",
+              "description": "Nadzór autorski i wsparcie na etapie realizacji projektu"
+            }
+          }
+        ]
+      }
+    })} />
+  </head>
+  <body class="min-h-screen flex flex-col font-[Inter,system-ui,sans-serif] antialiased">
+    <slot />
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 z-50 hidden">
+      <div class="bg-[#1a1a1a] border-t border-white/10 px-6 py-4">
+        <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p class="text-white/60 text-xs font-light leading-relaxed">
+            Ta strona korzysta z plików cookies niezbędnych do jej prawidłowego działania. Szczegóły znajdziesz w <a href="/polityka-prywatnosci" class="text-beige underline hover:text-beige-light">polityce prywatności</a>.
+          </p>
+          <button id="cookie-accept" class="shrink-0 bg-beige text-black px-6 py-2 text-xs tracking-wider uppercase hover:bg-beige-light transition-colors cursor-pointer">
+            Rozumiem
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      if (!localStorage.getItem('cookie-consent')) {
+        document.getElementById('cookie-banner')?.classList.remove('hidden');
+      }
+      document.getElementById('cookie-accept')?.addEventListener('click', () => {
+        localStorage.setItem('cookie-consent', '1');
+        document.getElementById('cookie-banner')?.classList.add('hidden');
+      });
+    </script>
+  </body>
+</html>

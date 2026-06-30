@@ -1,0 +1,41 @@
+---
+import ScrollReveal from "./ScrollReveal.astro";
+
+const services = [
+  { icon: '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>', title: "Projekt kompleksowy", description: "Kompleksowy projekt wnętrza obejmujący wszystkie etapy pracy - od układu funkcjonalnego po dokumentację techniczną i realistyczne wizualizacje. To rozwiązanie dla osób, które oczekują spójnego i dopracowanego projektu, ułatwiającego późniejszą realizację wnętrza." },
+  { icon: '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>', title: "Projekt funkcjonalny", description: "Usługa skupiona na stworzeniu ergonomicznego i praktycznego układu wnętrza. Opracowuję optymalne rozmieszczenie pomieszczeń, mebli oraz zabudów, dbając o komfort codziennego użytkowania i maksymalne wykorzystanie dostępnej przestrzeni." },
+  { icon: '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>', title: "Wizualizacje wnętrz", description: "Realistyczne wizualizacje pozwalające zobaczyć charakter i klimat projektowanego wnętrza jeszcze przed rozpoczęciem realizacji. Pomagają lepiej wyobrazić sobie przestrzeń, jej klimat oraz charakter planowanych rozwiązań." },
+  { icon: '<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>', title: "Wsparcie podczas realizacji", description: "Wsparcie na etapie realizacji projektu pomagające zachować spójność założeń projektowych oraz wprowadzanych rozwiązań. Zakres współpracy dostosowywany jest indywidualnie do potrzeb oraz charakteru projektu." },
+];
+---
+
+<section id="oferta" class="py-24 md:py-32 bg-surface">
+  <div class="max-w-7xl mx-auto px-6">
+    <ScrollReveal>
+      <div class="text-center mb-16">
+        <p class="text-beige text-sm tracking-[0.3em] uppercase mb-4">Oferta</p>
+        <h2 class="text-3xl md:text-4xl font-light">Co mogę dla Ciebie zrobić</h2>
+      </div>
+    </ScrollReveal>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      {services.map((service, index) => (
+        <ScrollReveal delay={index * 100}>
+          <div class="p-8 border border-white/5 hover:border-beige/30 transition-all duration-500 group h-full">
+            <div class="text-beige/70 mb-6 group-hover:text-beige group-hover:scale-110 transition-all duration-300 origin-left" set:html={service.icon} />
+            <h3 class="text-lg font-light mb-3 tracking-wide">{service.title}</h3>
+            <p class="text-white/60 text-sm leading-relaxed">{service.description}</p>
+          </div>
+        </ScrollReveal>
+      ))}
+    </div>
+
+    <ScrollReveal delay={400}>
+      <div class="text-center mt-16">
+        <a href="/#kontakt" class="inline-block border border-beige text-beige px-8 py-3.5 text-sm tracking-wider uppercase hover:bg-beige hover:text-black transition-all duration-300">
+          Umów konsultację
+        </a>
+      </div>
+    </ScrollReveal>
+  </div>
+</section>

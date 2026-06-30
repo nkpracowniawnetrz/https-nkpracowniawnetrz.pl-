@@ -1,0 +1,123 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navigation from "../../components/Navigation.astro";
+import Footer from "../../components/Footer.astro";
+import { projects } from "../../data/projects";
+import type { Room } from "../../data/projects";
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+
+const related = projects
+  .filter((p) => p.category === project.category && p.id !== project.id)
+  .slice(0, 3);
+---
+
+<Layout title={`${project.title} | Natalia Kołodziejska - Architekt Wnętrz`} description={project.description}>
+  <Navigation />
+
+  <!-- Hero with main image -->
+  <section class="relative h-[60vh] min-h-[400px] overflow-hidden">
+    <img src={project.images[0]} alt={project.title} class="absolute inset-0 w-full h-full object-cover" decoding="async" />
+    <div class="absolute inset-0 bg-gradient-to-t from-background via-black/40 to-black/20"></div>
+    <div class="absolute bottom-0 left-0 right-0 p-8 md:p-16">
+      <div class="max-w-5xl mx-auto">
+        <a href="/portfolio" class="inline-flex items-center gap-2 text-white/50 hover:text-beige transition-colors mb-6 text-sm">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          Portfolio
+        </a>
+        <p class="text-beige text-sm tracking-[0.3em] uppercase mb-3">{project.category}</p>
+        <h1 class="text-3xl md:text-5xl lg:text-6xl font-extralight tracking-tight">{project.title}</h1>
+      </div>
+    </div>
+  </section>
+
+  <main class="py-16 md:py-24">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="max-w-2xl mb-16">
+        <div class="w-12 h-[1px] bg-beige/50 mb-8"></div>
+        <p class="text-white/60 font-light leading-relaxed text-lg">{project.description}</p>
+      </div>
+
+      {project.rooms && project.rooms.length > 0 ? (
+        <div class="space-y-20">
+          {project.rooms.map((room: Room, roomIndex: number) => (
+            <div>
+              <div class="mb-6">
+                <p class="text-beige text-sm tracking-[0.3em] uppercase mb-2">{room.name}</p>
+                <p class="text-white/60 font-light leading-relaxed max-w-2xl">{room.description}</p>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {room.images.map((image: string, index: number) => (
+                  <div class:list={["overflow-hidden bg-surface", { "md:col-span-2": index === 0 }]}>
+                    <img src={image} alt={`${project.title} — ${room.name}, zdjęcie ${index + 1}`} loading={roomIndex === 0 && index === 0 ? "eager" : "lazy"} decoding="async" class="w-full h-auto object-cover hover:scale-[1.02] transition-transform duration-700" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {project.images.map((image: string, index: number) => (
+            <div class:list={["overflow-hidden bg-surface", { "md:col-span-2": index === 0 }]}>
+              <img src={image} alt={`${project.title} - zdjęcie ${index + 1}`} loading="lazy" decoding="async" class="w-full h-auto object-cover hover:scale-[1.02] transition-transform duration-700" />
+            </div>
+          ))}
+        </div>
+      )}
+
+      <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 py-10 border-y border-white/5">
+        <div>
+          <p class="text-xs text-white/50 uppercase tracking-wider mb-2">Kategoria</p>
+          <p class="text-sm font-light">{project.category}</p>
+        </div>
+        <div>
+          <p class="text-xs text-white/50 uppercase tracking-wider mb-2">Typ projektu</p>
+          <p class="text-sm font-light">Projekt wnętrza</p>
+        </div>
+        <div>
+          <p class="text-xs text-white/50 uppercase tracking-wider mb-2">Zakres</p>
+          <p class="text-sm font-light">{project.realized ? 'Koncepcja + Wizualizacja + Realizacja' : 'Koncepcja + Wizualizacja'}</p>
+        </div>
+        <div>
+          <p class="text-xs text-white/50 uppercase tracking-wider mb-2">Status</p>
+          <p class="text-sm font-light text-beige">{project.realized ? 'Zrealizowany' : 'Projekt'}</p>
+        </div>
+      </div>
+
+      <div class="mt-16 p-10 md:p-16 border border-white/5 text-center">
+        <h3 class="text-2xl font-light mb-3">Podoba Ci się ten projekt?</h3>
+        <p class="text-white/60 font-light mb-8">Chętnie stworzę coś podobnego dla Ciebie</p>
+        <a href="/#kontakt" class="inline-block bg-beige text-black px-10 py-4 text-sm tracking-wider uppercase hover:bg-beige-light transition-all duration-300">
+          Skontaktuj się ze mną
+        </a>
+      </div>
+
+      {related.length > 0 && (
+        <div class="mt-24">
+          <h3 class="text-xl font-light mb-8 tracking-wide">Podobne realizacje</h3>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {related.map((rel) => (
+              <a href={`/portfolio/${rel.id}`} class="group block">
+                <div class="relative aspect-[4/3] overflow-hidden bg-surface mb-3">
+                  <img src={rel.thumbnail} alt={rel.title} loading="lazy" decoding="async" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                </div>
+                <p class="text-xs text-beige/60 tracking-[0.2em] uppercase mb-1">{rel.category}</p>
+                <h4 class="text-sm font-light text-white/70 group-hover:text-white transition-colors">{rel.title}</h4>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

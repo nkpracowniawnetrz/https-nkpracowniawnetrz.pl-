@@ -1,0 +1,48 @@
+---
+---
+
+<section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <div
+    id="hero-bg"
+    class="absolute inset-0 bg-cover bg-center bg-no-repeat scale-110"
+    style="background-image: url('/images/stock/hero-bg.webp');"
+  ></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/70 to-background"></div>
+
+  <div class="relative z-10 text-center px-6 max-w-4xl">
+    <p class="text-beige text-sm tracking-[0.4em] uppercase mb-6 animate-fade-in-up">
+      Pracownia Wnętrz
+    </p>
+    <h1 class="text-5xl md:text-7xl lg:text-8xl font-extralight tracking-tight mb-4 animate-fade-in-up animate-delay-200">
+      Natalia
+    </h1>
+    <h1 class="text-5xl md:text-7xl lg:text-8xl font-extralight tracking-tight mb-6 animate-fade-in-up animate-delay-200">
+      Kołodziejska
+    </h1>
+    <div class="w-24 h-[1px] bg-beige/60 mx-auto mb-8 animate-fade-in-up animate-delay-400"></div>
+    <p class="text-white/70 text-lg md:text-xl font-light max-w-2xl mx-auto mb-12 animate-fade-in-up animate-delay-400 leading-relaxed">
+      Tworzę przestrzenie, które inspirują. Nowoczesne, eleganckie
+      i funkcjonalne wnętrza dopasowane do Twojego stylu życia.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up animate-delay-600">
+      <a href="/portfolio" class="border border-beige text-beige px-8 py-3.5 text-sm tracking-wider uppercase hover:bg-beige hover:text-black transition-all duration-300">
+        Zobacz realizacje
+      </a>
+      <a href="/#kontakt" class="border border-white/20 text-white/70 px-8 py-3.5 text-sm tracking-wider uppercase hover:border-white/50 hover:text-white transition-all duration-300">
+        Skontaktuj się
+      </a>
+    </div>
+  </div>
+
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+    <span class="text-[10px] tracking-[0.3em] uppercase text-white/50">Scroll</span>
+    <div class="w-[1px] h-8 bg-gradient-to-b from-white/40 to-transparent animate-bounce"></div>
+  </div>
+</section>
+
+<script>
+  const heroBg = document.getElementById("hero-bg");
+  window.addEventListener("scroll", () => {
+    if (heroBg) heroBg.style.transform = `translateY(${window.scrollY * 0.4}px) scale(1.1)`;
+  });
+</script>

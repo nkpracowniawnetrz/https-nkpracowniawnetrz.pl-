@@ -1,0 +1,38 @@
+---
+import ScrollReveal from "./ScrollReveal.astro";
+
+const testimonials = [
+  { name: "Anna K.", text: "Natalia doskonale wyczuła nasz styl i stworzyła przestrzeń, w której czujemy się jak w domu marzeń. Profesjonalizm na każdym etapie!", project: "Mieszkanie 65m\u00B2" },
+  { name: "Marek i Joanna W.", text: "Współpraca z Natalią to czysta przyjemność. Kreatywna, terminowa i pełna pomysłów. Efekt końcowy przeszedł nasze oczekiwania.", project: "Dom jednorodzinny" },
+  { name: "Katarzyna M.", text: "Polecam z całego serca! Natalia potrafi słuchać i przełożyła nasze marzenia na piękny, funkcjonalny projekt.", project: "Apartament 90m\u00B2" },
+];
+---
+
+<section class="py-24 md:py-32 bg-surface">
+  <div class="max-w-7xl mx-auto px-6">
+    <ScrollReveal>
+      <div class="text-center mb-16">
+        <p class="text-beige text-sm tracking-[0.3em] uppercase mb-4">Opinie</p>
+        <h2 class="text-3xl md:text-4xl font-light">Co mówią klienci</h2>
+      </div>
+    </ScrollReveal>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {testimonials.map((t, index) => (
+        <ScrollReveal delay={index * 150}>
+          <div class="p-10 border border-white/5 hover:border-beige/20 transition-all duration-500 relative h-full flex flex-col">
+            <div class="text-beige/15 text-7xl leading-none mb-4 select-none" style="font-family: Georgia, serif;">&ldquo;</div>
+            <p class="text-white/60 font-light leading-relaxed mb-8 flex-1 italic">{t.text}</p>
+            <div class="flex items-center gap-4 pt-6 border-t border-white/5">
+              <div class="w-10 h-10 rounded-full bg-beige/10 flex items-center justify-center text-beige text-sm">{t.name.charAt(0)}</div>
+              <div>
+                <p class="text-sm font-light tracking-wide">{t.name}</p>
+                <p class="text-xs text-beige/50">{t.project}</p>
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+      ))}
+    </div>
+  </div>
+</section>
